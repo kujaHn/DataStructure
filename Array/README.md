@@ -1,105 +1,113 @@
-# 배열
+# 배열(Array)
 
 * 배열은 거의 모든 프로그래밍 언어에 구현되어 있다.
 * 배열이란 연관된 데이터를 하나의 변수에 `그룹핑`해 관리하는 방법.
 * 배열을 쓰면 변수 하나에 여러 정보를 담을 수 있고, 주로 `반복문`을 첨가해 효율적으로 처리한다.
 
 ## 배열 입력
-        ```
-            public class Fruit {
-                public static void main(String[] args) {
-                    String[] fruit = new String[5];
-                    fruit[0] = "사과";
-                    fruit[1] = "수박";
-                    fruit[2] = "배";
-                    fruit[3] = "포도";
-                    fruit[4] = "딸기";
-                    }
-                }
-        ```
+* 방법 1
+```
+public class Fruit {
+    public static void main(String[] args) {
+        String[] fruit = new String[5];
+        fruit[0] = "사과";
+        fruit[1] = "수박";
+        fruit[2] = "배";
+        fruit[3] = "포도";
+        fruit[4] = "딸기";
+    }
+}
+```  
+* 방법 2
+```
+public class Fruit {
+    public static void main(String[] args) {
+        String[] fruit = new String[]{"사과", "수박", "배", "포도", "딸기"};
+    }
+}
+```
 * `사과`, `수박`, 같은 값들은 `배열에 저장된 값`이다.
     * 저장할 값의 `타입`에 따라 `String[]`, `int[]` 등등으로 나뉜다.
 * `[숫자]`는 각 값들을 식별하는 `인덱스`이다. 간단히 `값`들의 `주소`라고 생각을 하면 된다.
+    * 배열을 선언할때 사용되는 `[숫자]` 는 `배열의 크기`이다.
 * `값`과 `인덱스`를 합친것을 `엘리먼트`라고 한다.
 
 ## 배열 출력
 배열을 불러오거나 출력을 하려면 `주소`를 알아야 한다. 이것을 `인덱스`라고 했었다.  
-    ```
-        System.out.println(fruit[1]);
-        for (String s : fruit) {
-            System.out.println(s);
-        }
-    ```
+```
+System.out.println(fruit[1]);
+for (String s : fruit) {
+    System.out.println(s);
+}
+```
 * 결과  
-    ```
-        수박
-        사과
-        수박
-        배
-        포도
-        딸기
-    ```
+```
+수박
+사과
+수박
+배
+포도
+딸기
+```
 
 다음과 같이 특정한 `인덱스`를 입력해서 값을 불러올 수 있고, `반복문`을 이용해서 한번에 출력도 가능하다.
 
 ## 배열의 특징
+### 1. 변하지 않는 인덱스
+
 fruit[2]를 null로 선언을 해 보자.
 
-    ```
-        public class NullArray {
-            public static void main(String[] args) {
-                // 각 타입에 따라 String[], int[] 등등 가능하다.
-                String[] fruit = new String[5];
-                fruit[0] = "사과";
-                fruit[1] = "수박";
-                fruit[2] = "배";
-                fruit[3] = "포도";
-                fruit[4] = "딸기";
+```
+public class NullArray {
+    public static void main(String[] args) {
+        // 각 타입에 따라 String[], int[] 등등 가능하다.
+        String[] fruit = new String[5];
+        fruit[0] = "사과";
+        fruit[1] = "수박";
+        fruit[2] = "배";
+        fruit[3] = "포도";
+        fruit[4] = "딸기";
 
-                for (String s : fruit) {
-                    System.out.println(s);
-                }
-
-                System.out.println("-----------------");
-
-                // index 2를 null 선언
-                fruit[2] = null;
-
-                for (String s : fruit) {
-                    System.out.println(s);
-                }
-            }
+        for (String s : fruit) {
+            System.out.println(s);
         }
-    ```
 
-img
+        System.out.println("-----------------");
 
-for(i = 0; i < student.length; i++){
-  console.log(student[i]);
+        // index 2를 null 선언
+        fruit[2] = null;
+
+        for (String s : fruit) {
+            System.out.println(s);
+        }
+    }
 }
-앞선 반복문으로 배열의 원소를 출력하면 아래와 같은 결과가 나옵니다.
-
-최진혁
-한이람
-최유빈
+```
+그에따른 결과는 다음과 같다.  
+```
+사과
+수박
+배
+포도
+딸기
+-----------------
+사과
+수박
 null
-김주한
-4번째 줄에 처리하지 않아도 될 인덱스 3의 값, null이 보입니다. 물론 다음과 같이 조건문으로 null을 제외해도 됩니다. 예제 실행
+포도
+딸기
+```
+이렇게 `null`값이 남는다. 배열은 인덱스에 따라 값을 유지하기 떄문에 엘리먼트를 삭제해도 빈 공간이 남는다.  
+좋게 말하자면 수정을해도 인덱스 값이 변경되지 않아서 안정성이 있고  
+나쁘게 말하자면 빈자리가 남아 메모리의 낭비가 있다.  
+이 특징들을 바꾸어서 말하자면, `불변`하는 인덱스를 이용한 `조회`가 빠르고, `추가`, `삭제` 는 느리다.
 
-for(i = 0; i < student.length; i++){
-  if(student[i] != null) {
-     console.log(student[i]); 
-  }
-}
-이것도 좋은 방법이지만 이런 반복문을 수십 개 써야 한다면 그만큼 조건문도 많아집니다. 이게 배열의 단점입니다. 배열은 인덱스에 따라서 값을 유지하기 때문에 엘리먼트를 삭제해도 빈자리가 남습니다.
-
-그렇다면 존재하지 않는 데이터는 아예 없애버리는 편이 좋겠죠.
-
-img
-
-이렇게 삭제한 자리는 뒤에 위치한 엘리먼트로 메꾸면 어떨까요. 이렇게 데이터가 순서에 따라, 연속적으로 빈틈없이 위치하는 데이터 스트럭쳐는 리스트(list)라고 합니다. 그런데 이렇게 해도 문제가 있습니다. 김주한 학생의 식별자인 인덱스 값이 4에서 3으로 변했습니다. 만약 인덱스 4를 이용해 김주한 학생의 값을 가져오는 프로그램이 있다면 문제가 생길 겁니다.
-
-그럼 어떻게 해야 할까요? 프로그래머는 상황에 맞게 선택을 해야 합니다. 인덱스가 중요한 경우는 배열을 사용하세요. null을 제외하고 처리한다면 조건문을 사용하세요. 인덱스가 중요하지 않다면 리스트를 쓰세요.
-
-결론
-배열은 거의 모든 언어에 포함된 데이터 스트럭쳐 입니다. 프로그래머는 배열을 잘 다루어야 합니다. 기본 소양이라고 볼 수도 있지요. 하지만 배열이 비효율적인 경우도 있습니다. 프로그래머는 상황에 맞게 적합한 데이터 타입을 고안해야 합니다. 하지만 명심하세요. 배열은 직/간접적으로 이후에 나올 모든 데이터 스트럭쳐의 부품으로 씁니다. 따라서 배열에 대한 이해는 모든 데이터 스트럭쳐 이해의 공통요소라고 할 수 있습니다.
+### 크기가 변하지 않는다.
+맨 처음 배열을 선언하는 코드를 보자
+`String[] fruit = new String[5];` 여기서 우리는 `배열의 크기`를 지정했었다.  
+만약에 크기를 지정하지 않으면 어떻게 될까?  
+`java: array dimension missing` 다음과 같은 컴파일 에러가 뜨게 된다.  
+이렇게 배열은 크기를 반드시 지정해 주어야 하기떄문에 `확장성`이 떨어진다.  
+이를 보완하는게 `리스트` 이다.
+## 결론
+`인덱스`가 중요한 정보라면 `배열`을 사용하자.
