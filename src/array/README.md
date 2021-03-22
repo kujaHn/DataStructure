@@ -7,7 +7,7 @@
 ## 배열 입력
 * 방법 1
 ```
-public class Fruit {
+public class ArrayFruit {
     public static void main(String[] args) {
         String[] fruit = new String[5];
         fruit[0] = "사과";
@@ -20,7 +20,7 @@ public class Fruit {
 ```  
 * 방법 2
 ```
-public class Fruit {
+public class ArrayFruit {
     public static void main(String[] args) {
         String[] fruit = new String[]{"사과", "수박", "배", "포도", "딸기"};
     }
@@ -47,21 +47,19 @@ public class Fruit {
         }
         System.out.println();
 
-        // Arrays클래스에서는 이를 toString()으로 지원하고 있다.
+        // Arrays클래스에서는 이를 오버라이딩 된 toString()을 지원하고 있다.
         System.out.println(Arrays.toString(fruit));
+
+        //String 클래스에서의 toString()은 인스턴스 주소를 호출한다.
+        System.out.println(fruit.toString());
 ```
 * 결과  
-```
-수박
-[Ljava.lang.String;@16b98e56
-사과 수박 배 포도 딸기 
-[사과, 수박, 배, 포도, 딸기]
-```
+![image](https://user-images.githubusercontent.com/72388950/112017430-f3ee2280-8b70-11eb-8b48-e423298f040f.png)
 
 * 특정한 `인덱스`를 입력해서 값을 불러올 수 있다.
 * 일반적으로 변수 명만으로는 전체를 출력할 수 없다. => 인스턴스 주소가 출력이 된다.
 * `반복문`을 이용해서 한번에 출력도 가능하다.
-* `Arrays` 클래스에서는 한번에 출력을 가능케 하는 `toString()`를 지원하고 있다.
+* `Arrays` 클래스에서는 한번에 출력을 가능케 하는 오버라이딩 된 `toString()`를 지원하고 있다.
     * `Arrays`클래스의 `toString()` 구현코드
     ```
         public static String toString(Object[] a) {
@@ -80,6 +78,13 @@ public class Fruit {
                     return b.append(']').toString();
                 b.append(", ");
             }
+        }
+    ```
+    
+    * `String` 클래스의 `toString()` 구현코드
+        ```
+        public String toString() {
+            return getClass().getName() + "@" + Integer.toHexString(hashCode());
         }
     ```
 
