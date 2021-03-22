@@ -80,13 +80,36 @@ public class ArrayFruit {
             }
         }
     ```
-    
+* 레퍼런스 변수를 `출력`할 경우 `String`타입의 `toString()`을 따른다.
+    * `println(레퍼런스 변수)` 구현코드
+        ```
+        public void println(Object x) {
+            String s = String.valueOf(x);
+            if (getClass() == PrintStream.class) {
+                // need to apply String.valueOf again since first invocation
+                // might return null
+                writeln(String.valueOf(s));
+            } else {
+                synchronized (this) {
+                    print(s);
+                    newLine();
+                }
+            }
+        }
+        ```
+    * `valueOf(레퍼런스 변수)` 구현코드   
+        ```
+        public static String valueOf(Object obj) {
+            return (obj == null) ? "null" : obj.toString();
+        }
+        ```
     * `String` 클래스의 `toString()` 구현코드
         ```
         public String toString() {
             return getClass().getName() + "@" + Integer.toHexString(hashCode());
         }
-    ```
+        ```
+     그렇기 떄문에 `[Ljava.lang.String;@16b98e56`과 같은 `인스턴스 주소(hashCode)`가 출력이 되는 것이다.
 
 ## 배열의 특징
 ### 1. 변하지 않는 인덱스
