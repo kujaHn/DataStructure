@@ -35,22 +35,53 @@ public class Fruit {
 ## 배열 출력
 배열을 불러오거나 출력을 하려면 `주소`를 알아야 한다. 이것을 `인덱스`라고 했었다.  
 ```
-System.out.println(fruit[1]);
-for (String s : fruit) {
-    System.out.println(s);
-}
+        // 원하는 값의 인덱스를 알아야 출력이 가능하다.
+        System.out.println(fruit[1]);
+
+        // 배열의 변수 명만으로는 전체를 출력할 수 없다.
+        System.out.println(fruit);
+
+        // 반복문을 이용해서 배열 전체를 출력할 수 있다.
+        for (String s : fruit) {
+            System.out.print(s + " ");
+        }
+        System.out.println();
+
+        // Arrays클래스에서는 이를 toString()으로 지원하고 있다.
+        System.out.println(Arrays.toString(fruit));
 ```
 * 결과  
 ```
 수박
-사과
-수박
-배
-포도
-딸기
+[Ljava.lang.String;@16b98e56
+사과 수박 배 포도 딸기 
+[사과, 수박, 배, 포도, 딸기]
 ```
 
-다음과 같이 특정한 `인덱스`를 입력해서 값을 불러올 수 있고, `반복문`을 이용해서 한번에 출력도 가능하다.
+* 특정한 `인덱스`를 입력해서 값을 불러올 수 있다.
+* 일반적으로 변수 명만으로는 전체를 출력할 수 없다. => 인스턴스 주소가 출력이 된다.
+* `반복문`을 이용해서 한번에 출력도 가능하다.
+* `Arrays` 클래스에서는 한번에 출력을 가능케 하는 `toString()`를 지원하고 있다.
+    * `Arrays`클래스의 `toString()` 구현코드
+    ```
+        public static String toString(Object[] a) {
+            if (a == null)
+                return "null";
+
+            int iMax = a.length - 1;
+            if (iMax == -1)
+                return "[]";
+
+            StringBuilder b = new StringBuilder();
+            b.append('[');
+            for (int i = 0; ; i++) {
+                b.append(String.valueOf(a[i]));
+                if (i == iMax)
+                    return b.append(']').toString();
+                b.append(", ");
+            }
+        }
+    ```
 
 ## 배열의 특징
 ### 1. 변하지 않는 인덱스
