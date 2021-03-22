@@ -106,7 +106,7 @@ null
 맨 처음 배열을 선언하는 코드를 보자
 `String[] fruit = new String[5];` 여기서 우리는 `배열의 크기`를 지정했었다.  
 만약에 크기를 지정하지 않으면 어떻게 될까?  
-`java: array dimension missing` 다음과 같은 컴파일 에러가 뜨게 된다.  
+`java: array dimension missing`라는 컴파일 에러가 뜨게 된다.  
 이렇게 배열은 크기를 반드시 지정해 주어야 하기떄문에 `확장성`이 떨어진다.  
 이를 보완하는게 `리스트` 이다.
 ## 결론
