@@ -96,3 +96,8 @@ public class AddFruit {
 ```
 `print` 메소드들이 자체적으로 `toString()`를 실행하고 출력을 하기 때문에 이러한 결과들이 나오는 것이다.  
 가끔다가 "어? 이게 왜 이렇게 되지?" 라는 것들은 파도타기 하듯 타고 타고 넘어가면 궁금증이 해결 된다.
+
+## List의 종류
+`Java`에서 리스트의 종류는 `ArrayList`와 `LinkedList`가 있다. 각각을 세세하게 알아보자.
+* ArrayList
+* LinkedList
