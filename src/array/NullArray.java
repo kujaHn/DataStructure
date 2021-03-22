@@ -2,9 +2,6 @@ package array;
 
 public class NullArray {
     public static void main(String[] args) {
-        // 각 타입에 따라 String[], int[] 등등 가능하다.
-        // 방법1 : String[] fruit = new String[]{"사과", "수박", "배", "포도", "딸기"};
-        // 방법2
         String[] fruit = new String[5];
         fruit[0] = "사과";
         fruit[1] = "수박";
