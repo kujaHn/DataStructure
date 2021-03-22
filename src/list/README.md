@@ -99,5 +99,5 @@ public class AddFruit {
 
 ## List의 종류
 `Java`에서 리스트의 종류는 `ArrayList`와 `LinkedList`가 있다. 각각을 세세하게 알아보자.
-* ArrayList
-* LinkedList
+### [ArrayList](https://github.com/kujaHn/DataStructure/tree/main/src/list/arraylist)
+### [LinkedList](https://github.com/kujaHn/DataStructure/tree/main/src/list/linkedlist)
